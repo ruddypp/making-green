@@ -6,7 +6,7 @@ description: |
 
 # Making Green
 
-Use this skill after code edits are complete. Convert the final worktree into a sequence of tiny, meaningful commits on the active branch, tag every commit as a checkpoint, then push the branch and tags once after all commits are created.
+Use this skill after code edits are complete. Convert the final worktree into a sequence of tiny, meaningful commits on the active branch, tag every commit as a local checkpoint, then push the branch once after all commits are created.
 
 The goal is a dense, clear audit trail: every logical change should be easy to review, revert, and explain. High commit count must not reduce code quality or log readability.
 
@@ -26,8 +26,9 @@ This is the orchestrator skill for the Making Green package. Use these supportin
 - If one file contains four independent sections or edits, make four commits.
 - If a new feature naturally contains twenty meaningful review units, make twenty commits.
 - Use patch staging (`git add -p`, `git restore --staged -p`, or equivalent). Do not use `git add .`.
-- Push only after all commits and checkpoint tags are done.
-- Tag every commit with a checkpoint tag.
+- Push only after all commits and local checkpoint tags are done.
+- Tag every commit with a local checkpoint tag.
+- Do not push checkpoint tags unless the user explicitly asks for remote checkpoints.
 - Keep commits meaningful. Do not split one logical change into fake micro-commits only to increase commit count.
 - Keep code quality and commit log quality together. More commits are useful only when the code and history stay clearer.
 - Never commit protected content. Read `references/protected-content.md` before staging.
@@ -211,13 +212,13 @@ Use short slugs from the commit intent, such as:
 
 If the tag already exists, append `-2`, `-3`, or the short commit hash.
 
-Before pushing tags in a public repo, inspect tag volume:
+Checkpoint tags are local by default. Before pushing tags in a public repo, inspect tag volume:
 
 ```bash
 git tag --list "checkpoint/*" | wc -l
 ```
 
-If checkpoint tag volume is extreme, report the count. Continue when the user already chose checkpoint-per-commit behavior.
+If checkpoint tag volume is extreme, report the count. Do not push checkpoint tags unless the user explicitly asks for remote checkpoints.
 
 ### 7. Repeat Until Clean
 
@@ -233,7 +234,7 @@ If files remain intentionally uncommitted, report them clearly.
 
 ### 8. Push Once At End
 
-After all commits and tags are created, push the active branch and checkpoint tags. Use the repository's existing `origin` remote, whether it is HTTPS or SSH:
+After all commits and local checkpoint tags are created, push only the active branch. Use the repository's existing `origin` remote, whether it is HTTPS or SSH:
 
 ```bash
 git remote get-url origin
@@ -252,17 +253,21 @@ Push:
 ```bash
 CURRENT_BRANCH=$(git branch --show-current)
 git push origin "$CURRENT_BRANCH"
-git push origin --tags
 ```
 
 If no upstream exists, push to `origin` with upstream:
 
 ```bash
 git push -u origin "$CURRENT_BRANCH"
-git push origin --tags
 ```
 
-Do not push after every commit.
+Do not push after every commit. Do not push checkpoint tags by default.
+
+If the user explicitly asks for remote checkpoint tags, then run:
+
+```bash
+git push origin --tags
+```
 
 If push fails because authentication is missing, report the exact failure and leave local commits and tags intact. Do not change the remote from HTTPS to SSH or SSH to HTTPS unless the user asks.
 
@@ -272,7 +277,8 @@ Report:
 
 - active branch pushed
 - number of commits created
-- checkpoint tags created
+- local checkpoint tags created
+- whether checkpoint tags were pushed; default is no
 - remote URL type used: HTTPS, SSH, or other
 - validation commands run and failures, if any
 - files left uncommitted, if any
