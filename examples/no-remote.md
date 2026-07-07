@@ -21,5 +21,6 @@ User can add a remote later:
 ```bash
 git remote add origin https://github.com/ruddypp/making-green.git
 git push -u origin main
-git push origin --tags
 ```
+
+Checkpoint tags remain local unless the user explicitly pushes them.
