@@ -8,7 +8,7 @@ description: |
 
 Use this skill after code edits are complete. Convert the final worktree into a sequence of tiny, meaningful commits on the active branch, tag every commit as a checkpoint, then push the branch and tags once after all commits are created.
 
-The goal is a dense, clear audit trail: every logical change should be easy to review, revert, and explain.
+The goal is a dense, clear audit trail: every logical change should be easy to review, revert, and explain. High commit count must not reduce code quality or log readability.
 
 This is the orchestrator skill for the Making Green package. Use these supporting skills when available:
 
@@ -29,6 +29,7 @@ This is the orchestrator skill for the Making Green package. Use these supportin
 - Push only after all commits and checkpoint tags are done.
 - Tag every commit with a checkpoint tag.
 - Keep commits meaningful. Do not split one logical change into fake micro-commits only to increase commit count.
+- Keep code quality and commit log quality together. More commits are useful only when the code and history stay clearer.
 - Never commit protected content. Read `references/protected-content.md` before staging.
 - Write commit messages in English.
 - Use the existing remote configuration. HTTPS and SSH remotes are both valid.
@@ -150,6 +151,8 @@ Before committing, verify:
 - staged diff contains no protected content
 - unstaged changes remain available for later commits when needed
 - commit can be reverted without removing unrelated work
+- repository state remains coherent after this commit
+- commit message will make sense when read months later
 
 ### 5. Commit With Clear Message
 
