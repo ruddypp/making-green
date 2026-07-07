@@ -62,6 +62,13 @@ git diff
 git diff --stat
 ```
 
+If this package's `examples/` directory is available, use it as guidance for expected granularity:
+
+- `examples/one-file-many-commits.md`
+- `examples/skill-package-plan.md`
+- `examples/no-remote.md`
+- `examples/failed-validation.md`
+
 Group changes by intent and section, not by file. Good commit units use Conventional Commit style:
 
 - `fix(ui): align toolbar actions`
