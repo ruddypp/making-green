@@ -1,5 +1,7 @@
 # Making Green
 
+[![skills.sh](https://skills.sh/b/ruddypp/making-green)](https://skills.sh/ruddypp/making-green)
+
 Making Green is a public agent-skills package for turning completed code changes into many small, meaningful, reviewable commits, checkpointing each commit locally, and pushing the active branch once at the end.
 
 It is designed for developers who want dense GitHub contribution activity without empty commits, misleading history, or mixed rollback points.
@@ -51,6 +53,20 @@ npx skills use ruddypp/making-green --skill making-green
 ```
 
 The package uses plain `SKILL.md` files plus optional `agents/openai.yaml` metadata, so it stays portable across agents. The Skills CLI handles each agent's install path.
+
+## skills.sh Listing
+
+skills.sh listings are created from anonymous Skills CLI install telemetry. A public GitHub repo may be installable before it appears in search.
+
+To make this repo visible to skills.sh, install it through the Skills CLI:
+
+```bash
+npx skills add ruddypp/making-green --skill '*' --agent '*' --global --copy -y
+```
+
+After the repo is seen by telemetry, skills.sh can create the repo page and search entry. The page may not update immediately because skills.sh caches repository pages.
+
+This repo includes `skills.sh.json` to group skills on the repo page once indexed.
 
 ## Update
 
