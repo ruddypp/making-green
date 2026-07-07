@@ -12,6 +12,7 @@ Use this skill as the quality layer for `$making-green`.
 ## Principles
 
 - Maximize meaningful commits, not empty activity.
+- Prefer high granularity by default: section-level commits are good when sections have different review purposes.
 - Prefer small revertable patches over artificial commit inflation.
 - Do not create commits that only exist to turn GitHub green.
 - Do not hide failures; record validation failures in commit bodies.
@@ -36,6 +37,7 @@ Bad:
 - repeated edits that cancel each other out
 - empty commits
 - splitting one sentence into many commits without review value
+- combining multiple independently reviewable sections into one broad commit
 - generated artifacts committed only for activity
 - huge tag spam without a rollback purpose
 
@@ -81,7 +83,7 @@ Check that:
 
 ## If Asked To Make More Commits
 
-Create more commits only by finding real logical boundaries. If no honest boundary remains, say so and stop.
+Create more commits by finding real logical boundaries at section, hunk, behavior, example, metadata, and validation levels. If no honest boundary remains, say so and stop.
 
 Never use:
 
