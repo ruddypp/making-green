@@ -52,6 +52,34 @@ npx skills use ruddypp/making-green --skill making-green
 
 The package uses plain `SKILL.md` files plus optional `agents/openai.yaml` metadata, so it stays portable across agents. The Skills CLI handles each agent's install path.
 
+## Update
+
+If this repository changes, update your installed skills.
+
+Update global installs:
+
+```bash
+npx skills update -g
+```
+
+Update project installs:
+
+```bash
+npx skills update -p
+```
+
+Update only Making Green when installed globally:
+
+```bash
+npx skills update -g making-green
+```
+
+If update does not pick up the latest package, reinstall from GitHub:
+
+```bash
+npx skills add ruddypp/making-green --skill '*' --agent '*' --global --copy -y
+```
+
 ## What Making Green Does
 
 - Plans one commit per logical change.
