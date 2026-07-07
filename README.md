@@ -114,6 +114,12 @@ git tag --list 'checkpoint/*'
 git tag -d <tag-name>
 ```
 
+Cleanup helper:
+
+```bash
+scripts/cleanup-checkpoints.sh
+```
+
 Remote cleanup example:
 
 ```bash
@@ -173,6 +179,20 @@ Run:
 ```bash
 scripts/smoke-test.sh
 ```
+
+## Risk Inspection
+
+Before pushing, inspect local risks:
+
+```bash
+scripts/inspect-risk.sh
+```
+
+This reports remote type, checkpoint tag count, staged protected-looking paths, staged secret-looking content, and diff-check status.
+
+## Strict Checklist
+
+The main skill includes `skills/making-green/references/strict-checklist.md`. Agents should use it before final reporting.
 
 ## Notes
 
