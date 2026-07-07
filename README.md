@@ -144,6 +144,23 @@ skills/making-green/
   references/protected-content.md
 ```
 
+## Examples
+
+See `examples/` for expected commit planning style:
+
+- `examples/one-file-many-commits.md`
+- `examples/skill-package-plan.md`
+- `examples/no-remote.md`
+- `examples/failed-validation.md`
+
+## Smoke Test
+
+Run:
+
+```bash
+scripts/smoke-test.sh
+```
+
 ## Notes
 
 This package is instruction-only. It does not install Git hooks, background daemons, or automatic Git automation. The agent executes the workflow when the skill is invoked.
