@@ -5,12 +5,13 @@ description: Keep high-frequency git contribution workflows ethical, useful, and
 
 # Contribution Hygiene
 
-High commit count is acceptable only when each commit carries useful review value.
+High commit count is acceptable only when each commit carries useful review value. Commit volume and code quality must move together.
 
 Use this skill as the quality layer for `$making-green`.
 
 ## Principles
 
+- Keep code quality and commit readability as equal goals.
 - Maximize meaningful commits, not empty activity.
 - Prefer high granularity by default: section-level commits are good when sections have different review purposes.
 - Prefer small revertable patches over artificial commit inflation.
@@ -18,6 +19,21 @@ Use this skill as the quality layer for `$making-green`.
 - Do not hide failures; record validation failures in commit bodies.
 - Do not mix unrelated user work with agent work.
 - Do not rewrite public history unless the user explicitly requests it and understands the impact.
+
+## Quality Invariant
+
+Never make the code worse to produce more commits.
+
+Each commit should leave the repository in a coherent state:
+
+- code remains readable
+- public behavior is not accidentally broken
+- formatting is consistent with the project
+- generated or noisy changes are isolated
+- commit message explains the exact intent
+- rollback target is obvious from the log
+
+If a smaller split would make code temporarily confusing, misleading, or broken, use a larger honest commit instead.
 
 ## Good High-Frequency Commits
 
