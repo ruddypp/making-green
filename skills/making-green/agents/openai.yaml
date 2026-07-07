@@ -1,0 +1,4 @@
+interface:
+  display_name: "Making Green"
+  short_description: "Frequent small commits and final push"
+  default_prompt: "Use $making-green after code changes to split work into tiny commits, checkpoint each one, and push once at the end."
