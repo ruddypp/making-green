@@ -23,34 +23,32 @@ Use `$making-green` for the full workflow. It references the other five skills a
 Install all skills for every supported agent in the current project:
 
 ```bash
-npx skills add <owner>/<repo> --all
+npx skills add ruddypp/making-green --all
 ```
 
 Install all skills globally for every supported agent:
 
 ```bash
-npx skills add <owner>/<repo> --skill '*' --agent '*' --global --copy -y
+npx skills add ruddypp/making-green --skill '*' --agent '*' --global --copy -y
 ```
 
 Install the main skill only:
 
 ```bash
-npx skills add <owner>/<repo> --skill making-green
+npx skills add ruddypp/making-green --skill making-green
 ```
 
 Install all skills for Codex only:
 
 ```bash
-npx skills add <owner>/<repo> --skill '*' --agent codex
+npx skills add ruddypp/making-green --skill '*' --agent codex
 ```
 
 Use without installing:
 
 ```bash
-npx skills use <owner>/<repo> --skill making-green
+npx skills use ruddypp/making-green --skill making-green
 ```
-
-Replace `<owner>/<repo>` with this repository after publishing.
 
 The package uses plain `SKILL.md` files plus optional `agents/openai.yaml` metadata, so it stays portable across agents. The Skills CLI handles each agent's install path.
 
