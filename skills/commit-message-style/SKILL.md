@@ -5,7 +5,7 @@ description: Write clear English Conventional Commit messages for small git comm
 
 # Commit Message Style
 
-Write every commit message in English. Optimize for review, rollback, and search.
+Write every commit message in English. Optimize for review, rollback, and search. High commit volume only works when the log stays easy to scan.
 
 Use after `$safe-staging`, before `git commit`, or inside `$making-green`.
 
@@ -42,6 +42,8 @@ Use a short scope from the touched area, such as `auth`, `ui`, `api`, `docs`, `c
 - State the specific outcome, not the action mechanics.
 - Avoid vague summaries: `update`, `changes`, `fix stuff`, `misc`, `wip`.
 - Do not mention AI or the agent unless the repo convention requires it.
+- Make adjacent commits distinguishable at a glance.
+- If two messages would look almost identical, the commits are probably too small or the summaries need sharper scopes.
 
 ## Body Rules
 
