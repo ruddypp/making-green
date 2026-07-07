@@ -88,9 +88,11 @@ If authentication is missing, the agent should leave local commits and tags inta
 
 ## Philosophy
 
-High-frequency commits are useful only when each commit carries review value.
+High-frequency commits are useful only when each commit carries review value. Code quality and commit log quality must move together.
 
 Making Green should bias toward more commits than a typical human workflow. A new skill, feature, or module can reasonably produce many commits when each commit maps to a distinct section, behavior, example, safety rule, or metadata file.
+
+More commits are not the goal by themselves. The goal is more readable rollback points: small code changes, clear English messages, coherent repository state, and logs that remain easy to scan.
 
 Good:
 
