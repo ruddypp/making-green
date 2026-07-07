@@ -9,6 +9,8 @@ Undo work with an auditable path. Prefer revert commits over history rewriting.
 
 Use this skill directly when the user asks for rollback, or as a recovery reference for `$making-green`.
 
+For no-remote and checkpoint examples in the Making Green package, see `examples/no-remote.md`.
+
 ## Safety Rules
 
 - Inspect before undoing.
