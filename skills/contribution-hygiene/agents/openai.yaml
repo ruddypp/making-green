@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contribution Hygiene"
+  short_description: "Keep frequent commits meaningful"
+  default_prompt: "Use $contribution-hygiene to keep high-frequency commits useful, ethical, and reviewable."
