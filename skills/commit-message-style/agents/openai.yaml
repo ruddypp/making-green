@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Message Style"
+  short_description: "Write clear Conventional Commits"
+  default_prompt: "Use $commit-message-style to write a clear English Conventional Commit message."
