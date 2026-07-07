@@ -20,6 +20,21 @@ This is the orchestrator skill for the Making Green package. Use these supportin
 
 Read `references/strict-checklist.md` before final reporting.
 
+## Keeping This Skill Updated
+
+If the user says this package changed, asks why behavior differs from the latest README, or wants the newest Making Green behavior, tell them to update installed skills:
+
+```bash
+npx skills update -g
+npx skills update -p
+```
+
+For a full global reinstall from GitHub:
+
+```bash
+npx skills add ruddypp/making-green --skill '*' --agent '*' --global --copy -y
+```
+
 ## Rules
 
 - Commit on the active branch. Do not create or switch branches unless the user explicitly asks.
