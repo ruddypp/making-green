@@ -18,6 +18,8 @@ This is the orchestrator skill for the Making Green package. Use these supportin
 - `$contribution-hygiene` to prevent fake, spammy, or misleading activity.
 - `$git-rollback` when a checkpoint or commit must be reverted.
 
+Read `references/strict-checklist.md` before final reporting.
+
 ## Rules
 
 - Commit on the active branch. Do not create or switch branches unless the user explicitly asks.
@@ -122,6 +124,12 @@ Use `$contribution-hygiene` while deciding whether the planned commits are meani
 
 ```bash
 git diff --check
+```
+
+If this package's scripts are available, run the risk inspector before final push:
+
+```bash
+scripts/inspect-risk.sh
 ```
 
 Run the project's formatter if it is obvious and quick. Prefer existing commands from package scripts, task runners, or repo docs, for example:
@@ -272,6 +280,8 @@ git push origin --tags
 If push fails because authentication is missing, report the exact failure and leave local commits and tags intact. Do not change the remote from HTTPS to SSH or SSH to HTTPS unless the user asks.
 
 ## Final Report
+
+Before final report, read and satisfy `references/strict-checklist.md`.
 
 Report:
 
