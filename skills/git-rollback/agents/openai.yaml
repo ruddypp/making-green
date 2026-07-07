@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Rollback"
+  short_description: "Undo commits through safe reverts"
+  default_prompt: "Use $git-rollback to inspect rollback options and revert the requested change safely."
