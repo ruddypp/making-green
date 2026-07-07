@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit Planner"
+  short_description: "Plan small reviewable commits"
+  default_prompt: "Use $commit-planner to turn this dirty git worktree into a sequence of small, meaningful commits."
