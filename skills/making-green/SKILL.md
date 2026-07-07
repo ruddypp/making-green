@@ -22,7 +22,9 @@ This is the orchestrator skill for the Making Green package. Use these supportin
 
 - Commit on the active branch. Do not create or switch branches unless the user explicitly asks.
 - Commit pre-existing dirty work before new agent work when possible, so user changes do not mix with agent changes.
-- Create one commit per logical change. If one file contains four independent changes, make four commits.
+- Default to high granularity. Create one commit per smallest meaningful logical change.
+- If one file contains four independent sections or edits, make four commits.
+- If a new feature naturally contains twenty meaningful review units, make twenty commits.
 - Use patch staging (`git add -p`, `git restore --staged -p`, or equivalent). Do not use `git add .`.
 - Push only after all commits and checkpoint tags are done.
 - Tag every commit with a checkpoint tag.
@@ -59,7 +61,7 @@ git diff
 git diff --stat
 ```
 
-Group changes by intent, not by file. Good commit units use Conventional Commit style:
+Group changes by intent and section, not by file. Good commit units use Conventional Commit style:
 
 - `fix(ui): align toolbar actions`
 - `feat(auth): add session expiry warning`
@@ -69,7 +71,18 @@ Group changes by intent, not by file. Good commit units use Conventional Commit 
 - `style(page): format dashboard layout classes`
 - `chore(config): update formatter settings`
 
-When multiple logical changes are in one hunk, split with patch staging if safe. If Git cannot split the hunk cleanly, prefer the smallest truthful commit over risky manual churn.
+For high-frequency workflows, a medium feature should often produce many commits. Split by:
+
+- public documentation sections
+- skill frontmatter versus skill body
+- each workflow phase
+- each safety rule group
+- each example group
+- each metadata file
+- each implementation behavior
+- each test behavior
+
+When multiple logical changes are in one hunk, split with patch staging if safe. If Git cannot split the hunk cleanly, prefer the smallest truthful combined commit over risky manual churn.
 
 Write a commit plan before staging. Use this shape:
 
@@ -79,6 +92,17 @@ Intent: one UI layout fix.
 Files/hunks: app/page.tsx toolbar container classes.
 Why separate: can revert without touching empty state copy.
 Validation: git diff --check; formatter if obvious.
+```
+
+For a new skill file, a better high-granularity plan is:
+
+```text
+Commit 1: feat(skill-name): add invocation metadata
+Commit 2: feat(skill-name): define workflow goals
+Commit 3: feat(skill-name): add safety rules
+Commit 4: feat(skill-name): add execution workflow
+Commit 5: feat(skill-name): add final report requirements
+Commit 6: feat(skill-name): add agent metadata
 ```
 
 Before continuing, verify every changed hunk is assigned to exactly one planned commit or intentionally left uncommitted.
