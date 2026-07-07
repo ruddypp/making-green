@@ -84,6 +84,11 @@ If one hunk contains multiple intents but cannot be split safely, plan one small
 
 ## High-Granularity Examples
 
+For detailed examples in this package, see:
+
+- `examples/one-file-many-commits.md`
+- `examples/skill-package-plan.md`
+
 For a skill package, prefer this style:
 
 ```text
