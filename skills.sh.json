@@ -1,0 +1,24 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Workflow",
+      "description": "Core skills for high-frequency, reviewable commit workflows.",
+      "skills": [
+        "making-green",
+        "commit-planner",
+        "safe-staging",
+        "commit-message-style"
+      ]
+    },
+    {
+      "title": "Safety",
+      "description": "Supporting skills for rollback and contribution quality.",
+      "skills": [
+        "git-rollback",
+        "contribution-hygiene"
+      ]
+    }
+  ]
+}
