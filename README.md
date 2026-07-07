@@ -84,6 +84,29 @@ git@github.com:owner/repo.git
 
 If authentication is missing, the agent should leave local commits and tags intact, report the push failure, and avoid changing the remote URL unless the user asks.
 
+## Checkpoint Tags
+
+Making Green tags every commit by default:
+
+```text
+checkpoint/YYYYMMDD-HHMMSS-short-slug
+```
+
+This is useful for rollback because every commit has a named recovery point. It can also create many tags in a public repository. If you want fewer remote tags, tell the agent before it starts: "commit normally, but do not push checkpoint tags."
+
+Local cleanup example:
+
+```bash
+git tag --list 'checkpoint/*'
+git tag -d <tag-name>
+```
+
+Remote cleanup example:
+
+```bash
+git push origin :refs/tags/<tag-name>
+```
+
 ## Philosophy
 
 High-frequency commits are useful only when each commit carries review value. Code quality and commit log quality must move together.
