@@ -57,7 +57,9 @@ The package uses plain `SKILL.md` files plus optional `agents/openai.yaml` metad
 ## What Making Green Does
 
 - Plans one commit per logical change.
+- Defaults to high granularity: section-level commits are expected when sections have different review purposes.
 - Splits several changes in one file into several commits when safe.
+- Turns medium-sized features into many meaningful commits, not one broad commit.
 - Uses patch staging instead of `git add .`.
 - Preserves pre-existing dirty work in separate checkpoint commits.
 - Runs fast checks: formatter when obvious, plus `git diff --check`.
@@ -87,6 +89,8 @@ If authentication is missing, the agent should leave local commits and tags inta
 ## Philosophy
 
 High-frequency commits are useful only when each commit carries review value.
+
+Making Green should bias toward more commits than a typical human workflow. A new skill, feature, or module can reasonably produce many commits when each commit maps to a distinct section, behavior, example, safety rule, or metadata file.
 
 Good:
 
