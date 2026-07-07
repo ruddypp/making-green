@@ -1,6 +1,6 @@
 # Making Green
 
-Making Green is a public agent-skills package for turning completed code changes into many small, meaningful, reviewable commits, checkpointing each commit, and pushing the active branch once at the end.
+Making Green is a public agent-skills package for turning completed code changes into many small, meaningful, reviewable commits, checkpointing each commit locally, and pushing the active branch once at the end.
 
 It is designed for developers who want dense GitHub contribution activity without empty commits, misleading history, or mixed rollback points.
 
@@ -62,8 +62,9 @@ The package uses plain `SKILL.md` files plus optional `agents/openai.yaml` metad
 - Preserves pre-existing dirty work in separate checkpoint commits.
 - Runs fast checks: formatter when obvious, plus `git diff --check`.
 - Writes English Conventional Commit messages.
-- Tags every commit with a checkpoint tag.
-- Pushes the active branch and checkpoint tags once after all commits are done.
+- Tags every commit with a local checkpoint tag.
+- Pushes the active branch once after all commits are done.
+- Does not push checkpoint tags unless the user explicitly asks for remote checkpoints.
 - Supports both HTTPS and SSH Git remotes by using the existing `origin` URL.
 - Avoids protected content such as secrets, local env files, dependency folders, and build output.
 
@@ -86,13 +87,25 @@ If authentication is missing, the agent should leave local commits and tags inta
 
 ## Checkpoint Tags
 
-Making Green tags every commit by default:
+Making Green creates a local tag for every commit by default:
 
 ```text
 checkpoint/YYYYMMDD-HHMMSS-short-slug
 ```
 
-This is useful for rollback because every commit has a named recovery point. It can also create many tags in a public repository. If you want fewer remote tags, tell the agent before it starts: "commit normally, but do not push checkpoint tags."
+This is useful for rollback because every commit has a named recovery point. Checkpoint tags are local by default and should not be pushed to GitHub unless you explicitly want remote checkpoints.
+
+Default push:
+
+```bash
+git push origin <branch>
+```
+
+Only push checkpoint tags if explicitly requested:
+
+```bash
+git push origin --tags
+```
 
 Local cleanup example:
 
