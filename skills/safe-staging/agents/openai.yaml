@@ -1,0 +1,4 @@
+interface:
+  display_name: "Safe Staging"
+  short_description: "Stage one safe change at a time"
+  default_prompt: "Use $safe-staging to stage exactly one logical change without protected content."
