@@ -59,7 +59,7 @@ Bad:
 
 ## Checkpoint Tag Hygiene
 
-`$making-green` uses checkpoint tags per commit by default. This improves rollback but can create many remote tags.
+`$making-green` creates local checkpoint tags per commit by default. This improves rollback without cluttering GitHub tags.
 
 Use stable tag names:
 
@@ -67,14 +67,14 @@ Use stable tag names:
 checkpoint/YYYYMMDD-HHMMSS-short-slug
 ```
 
-Before pushing tags, inspect volume:
+If the user explicitly asks to push checkpoint tags, inspect volume first:
 
 ```bash
 git tag --list "checkpoint/*" --sort=-creatordate | head -50
 git tag --list "checkpoint/*" | wc -l
 ```
 
-If tag volume is extreme for a public repository, report it before pushing. Continue when the user has already chosen checkpoint-per-commit behavior.
+If tag volume is extreme for a public repository, report it before pushing. Do not push checkpoint tags unless the user explicitly asks for remote checkpoints.
 
 Do not create releases from checkpoint tags.
 
